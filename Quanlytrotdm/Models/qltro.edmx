@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QUANLYNHATROModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="IDADDRESS" />
+          </Key>
+          <Property Name="IDADDRESS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="50" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="10" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEX" Type="nvarchar" MaxLength="3" />
+          <Property Name="AVATAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATEBIRD" Type="date" />
+        </EntityType>
+        <EntityType Name="HANDLE">
+          <Key>
+            <PropertyRef Name="IDHAND" />
+          </Key>
+          <Property Name="IDHAND" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="70" />
+          <Property Name="CONDITION" Type="nvarchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="MESSEGER">
+          <Key>
+            <PropertyRef Name="IDMESS" />
+          </Key>
+          <Property Name="IDMESS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDMOTEL" Type="int" />
+          <Property Name="IDSTUDENT" Type="int" />
+          <Property Name="CONTENT" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MOTEL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="50" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="10" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEX" Type="nvarchar" MaxLength="3" />
+          <Property Name="AVATAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATEBIRD" Type="date" />
+          <Property Name="CMND" Type="nvarchar" MaxLength="9" />
+          <Property Name="HANDLE" Type="int" />
+          <Property Name="IDPER" Type="int" />
+          <Property Name="ACCOUNTNUMBER" Type="int" />
+          <Property Name="HINHANH" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PERMISSION">
+          <Key>
+            <PropertyRef Name="IDPER" />
+          </Key>
+          <Property Name="IDPER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONTENT" Type="nvarchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="PRICE">
+          <Key>
+            <PropertyRef Name="IDPRICE" />
+          </Key>
+          <Property Name="IDPRICE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRICE" Type="int" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLEROOM" Type="nvarchar" MaxLength="30" />
+          <Property Name="IDMOTEL" Type="int" />
+          <Property Name="PRICE" Type="int" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="50" />
+          <Property Name="INFORMATION" Type="nvarchar" MaxLength="70" />
+          <Property Name="CONTACT" Type="nvarchar" MaxLength="50" />
+          <Property Name="EVALUATE" Type="int" />
+          <Property Name="HINHANH" Type="nvarchar" MaxLength="50" />
+          <Property Name="NGAYDANG" Type="date" />
+        </EntityType>
+        <EntityType Name="STUDENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="50" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="10" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEX" Type="nvarchar" MaxLength="3" />
+          <Property Name="AVATAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATEBIRD" Type="date" />
+          <Property Name="HANDLE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__MOTEL__IDPER__5AEE82B9">
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="0..1" />
+          <End Role="MOTEL" Type="Self.MOTEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISSION">
+              <PropertyRef Name="IDPER" />
+            </Principal>
+            <Dependent Role="MOTEL">
+              <PropertyRef Name="IDPER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_1">
+          <End Role="MOTEL" Type="Self.MOTEL" Multiplicity="0..1" />
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOTEL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ROOM">
+              <PropertyRef Name="IDMOTEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_2">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="0..1" />
+          <End Role="MESSEGER" Type="Self.MESSEGER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESSEGER">
+              <PropertyRef Name="IDSTUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_3">
+          <End Role="MOTEL" Type="Self.MOTEL" Multiplicity="0..1" />
+          <End Role="MESSEGER" Type="Self.MESSEGER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOTEL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESSEGER">
+              <PropertyRef Name="IDMOTEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QUANLYNHATROModel1StoreContainer">
+          <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HANDLE" EntityType="Self.HANDLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MESSEGER" EntityType="Self.MESSEGER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MOTEL" EntityType="Self.MOTEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERMISSION" EntityType="Self.PERMISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRICE" EntityType="Self.PRICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT" EntityType="Self.STUDENT" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__MOTEL__IDPER__5AEE82B9" Association="Self.FK__MOTEL__IDPER__5AEE82B9">
+            <End Role="PERMISSION" EntitySet="PERMISSION" />
+            <End Role="MOTEL" EntitySet="MOTEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_1" Association="Self.FK_1">
+            <End Role="MOTEL" EntitySet="MOTEL" />
+            <End Role="ROOM" EntitySet="ROOM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_2" Association="Self.FK_2">
+            <End Role="STUDENT" EntitySet="STUDENT" />
+            <End Role="MESSEGER" EntitySet="MESSEGER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_3" Association="Self.FK_3">
+            <End Role="MOTEL" EntitySet="MOTEL" />
+            <End Role="MESSEGER" EntitySet="MESSEGER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QUANLYNHATROModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="IDADDRESS" />
+          </Key>
+          <Property Name="IDADDRESS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADDRESS1" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGE" Type="Int32" />
+          <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEX" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="AVATAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATEBIRD" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="HANDLE">
+          <Key>
+            <PropertyRef Name="IDHAND" />
+          </Key>
+          <Property Name="IDHAND" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="CONDITION" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MESSEGER">
+          <Key>
+            <PropertyRef Name="IDMESS" />
+          </Key>
+          <Property Name="IDMESS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMOTEL" Type="Int32" />
+          <Property Name="IDSTUDENT" Type="Int32" />
+          <Property Name="CONTENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="STUDENT" Relationship="Self.FK_2" FromRole="MESSEGER" ToRole="STUDENT" />
+          <NavigationProperty Name="MOTEL" Relationship="Self.FK_3" FromRole="MESSEGER" ToRole="MOTEL" />
+        </EntityType>
+        <EntityType Name="MOTEL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGE" Type="Int32" />
+          <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEX" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="AVATAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATEBIRD" Type="DateTime" Precision="0" />
+          <Property Name="CMND" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="HANDLE" Type="Int32" />
+          <Property Name="IDPER" Type="Int32" />
+          <Property Name="ACCOUNTNUMBER" Type="Int32" />
+          <NavigationProperty Name="MESSEGERs" Relationship="Self.FK_3" FromRole="MOTEL" ToRole="MESSEGER" />
+          <NavigationProperty Name="PERMISSION" Relationship="Self.FK__MOTEL__IDPER__5AEE82B9" FromRole="MOTEL" ToRole="PERMISSION" />
+          <NavigationProperty Name="ROOMs" Relationship="Self.FK_1" FromRole="MOTEL" ToRole="ROOM" />
+          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PERMISSION">
+          <Key>
+            <PropertyRef Name="IDPER" />
+          </Key>
+          <Property Name="IDPER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONTENT" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MOTELs" Relationship="Self.FK__MOTEL__IDPER__5AEE82B9" FromRole="PERMISSION" ToRole="MOTEL" />
+        </EntityType>
+        <EntityType Name="PRICE">
+          <Key>
+            <PropertyRef Name="IDPRICE" />
+          </Key>
+          <Property Name="IDPRICE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRICE1" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLEROOM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IDMOTEL" Type="Int32" />
+          <Property Name="PRICE" Type="Int32" />
+          <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="INFORMATION" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="CONTACT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EVALUATE" Type="Int32" />
+          <NavigationProperty Name="MOTEL" Relationship="Self.FK_1" FromRole="ROOM" ToRole="MOTEL" />
+          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYDANG" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="STUDENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGE" Type="Int32" />
+          <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEX" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="AVATAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATEBIRD" Type="DateTime" Precision="0" />
+          <Property Name="HANDLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MESSEGERs" Relationship="Self.FK_2" FromRole="STUDENT" ToRole="MESSEGER" />
+        </EntityType>
+        <Association Name="FK_2">
+          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="0..1" />
+          <End Role="MESSEGER" Type="Self.MESSEGER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESSEGER">
+              <PropertyRef Name="IDSTUDENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_3">
+          <End Role="MOTEL" Type="Self.MOTEL" Multiplicity="0..1" />
+          <End Role="MESSEGER" Type="Self.MESSEGER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOTEL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MESSEGER">
+              <PropertyRef Name="IDMOTEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MOTEL__IDPER__5AEE82B9">
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="0..1" />
+          <End Role="MOTEL" Type="Self.MOTEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISSION">
+              <PropertyRef Name="IDPER" />
+            </Principal>
+            <Dependent Role="MOTEL">
+              <PropertyRef Name="IDPER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_1">
+          <End Role="MOTEL" Type="Self.MOTEL" Multiplicity="0..1" />
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOTEL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ROOM">
+              <PropertyRef Name="IDMOTEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QUANLYNHATROEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADDRESSes" EntityType="Self.ADDRESS" />
+          <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
+          <EntitySet Name="HANDLEs" EntityType="Self.HANDLE" />
+          <EntitySet Name="MESSEGERs" EntityType="Self.MESSEGER" />
+          <EntitySet Name="MOTELs" EntityType="Self.MOTEL" />
+          <EntitySet Name="PERMISSIONs" EntityType="Self.PERMISSION" />
+          <EntitySet Name="PRICEs" EntityType="Self.PRICE" />
+          <EntitySet Name="ROOMs" EntityType="Self.ROOM" />
+          <EntitySet Name="STUDENTs" EntityType="Self.STUDENT" />
+          <AssociationSet Name="FK_2" Association="Self.FK_2">
+            <End Role="STUDENT" EntitySet="STUDENTs" />
+            <End Role="MESSEGER" EntitySet="MESSEGERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_3" Association="Self.FK_3">
+            <End Role="MOTEL" EntitySet="MOTELs" />
+            <End Role="MESSEGER" EntitySet="MESSEGERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MOTEL__IDPER__5AEE82B9" Association="Self.FK__MOTEL__IDPER__5AEE82B9">
+            <End Role="PERMISSION" EntitySet="PERMISSIONs" />
+            <End Role="MOTEL" EntitySet="MOTELs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_1" Association="Self.FK_1">
+            <End Role="MOTEL" EntitySet="MOTELs" />
+            <End Role="ROOM" EntitySet="ROOMs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QUANLYNHATROModel1StoreContainer" CdmEntityContainer="QUANLYNHATROEntities1">
+          <EntitySetMapping Name="ADDRESSes">
+            <EntityTypeMapping TypeName="QUANLYNHATROModel1.ADDRESS">
+              <MappingFragment StoreEntitySet="ADDRESS">
+                <ScalarProperty Name="IDADDRESS" ColumnName="IDADDRESS" />
+                <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADMINs">
+            <EntityTypeMapping TypeName="QUANLYNHATROModel1.ADMIN">
+              <MappingFragment StoreEntitySet="ADMIN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="DATEBIRD" ColumnName="DATEBIRD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HANDLEs">
+            <EntityTypeMapping TypeName="QUANLYNHATROModel1.HANDLE">
+              <MappingFragment StoreEntitySet="HANDLE">
+                <ScalarProperty Name="IDHAND" ColumnName="IDHAND" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="CONDITION" ColumnName="CONDITION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESSEGERs">
+            <EntityTypeMapping TypeName="QUANLYNHATROModel1.MESSEGER">
+              <MappingFragment StoreEntitySet="MESSEGER">
+                <ScalarProperty Name="IDMESS" ColumnName="IDMESS" />
+                <ScalarProperty Name="IDMOTEL" ColumnName="IDMOTEL" />
+                <ScalarProperty Name="IDSTUDENT" ColumnName="IDSTUDENT" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOTELs">
+            <EntityTypeMapping TypeName="QUANLYNHATROModel1.MOTEL">
+              <MappingFragment StoreEntitySet="MOTEL">
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="DATEBIRD" ColumnName="DATEBIRD" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="HANDLE" ColumnName="HANDLE" />
+                <ScalarProperty Name="IDPER" ColumnName="IDPER" />
+                <ScalarProperty Name="ACCOUNTNUMBER" ColumnName="ACCOUNTNUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERMISSIONs">
+            <EntityTypeMapping TypeName="QUANLYNHATROModel1.PERMISSION">
+              <MappingFragment StoreEntitySet="PERMISSION">
+                <ScalarProperty Name="IDPER" ColumnName="IDPER" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRICEs">
+            <EntityTypeMapping TypeName="QUANLYNHATROModel1.PRICE">
+              <MappingFragment StoreEntitySet="PRICE">
+                <ScalarProperty Name="IDPRICE" ColumnName="IDPRICE" />
+                <ScalarProperty Name="PRICE1" ColumnName="PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOMs">
+            <EntityTypeMapping TypeName="QUANLYNHATROModel1.ROOM">
+              <MappingFragment StoreEntitySet="ROOM">
+                <ScalarProperty Name="NGAYDANG" ColumnName="NGAYDANG" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLEROOM" ColumnName="TITLEROOM" />
+                <ScalarProperty Name="IDMOTEL" ColumnName="IDMOTEL" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="INFORMATION" ColumnName="INFORMATION" />
+                <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+                <ScalarProperty Name="EVALUATE" ColumnName="EVALUATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENTs">
+            <EntityTypeMapping TypeName="QUANLYNHATROModel1.STUDENT">
+              <MappingFragment StoreEntitySet="STUDENT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="DATEBIRD" ColumnName="DATEBIRD" />
+                <ScalarProperty Name="HANDLE" ColumnName="HANDLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,36 @@
+﻿@using Quanlytrotdm.Models
+@model IEnumerable<Quanlytrotdm.Models.ROOM>
+
+@foreach (var n in Model)
+{
+    
+    <div class="col-lg-3" >
+        <div class="product-item">
+            <div class="product-title">
+                <a href="#">@n.TITLEROOM</a>
+                <div class="ratting">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
+            <div class="product-image">
+                <a href="product-detail.html">
+                    <img src="~/Content/Anhtro/@n.HINHANH" alt="Product Image" style="background-position: center; background-size:contain;height:200px">
+                </a>
+                <div class="product-action">
+                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                    <a href="#"><i class="fa fa-heart"></i></a>
+                    <a href="#"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+            <div class="product-price">
+                <h3><span> @String.Format("{0:0,0}",n.PRICE)</span>VNĐ</h3>
+                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Thuê</a>
+            </div>
+        </div>
+    </div>
+}
+
